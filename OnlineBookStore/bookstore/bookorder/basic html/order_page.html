@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Order List</h2>{% endblock %}
+{% block content %}
+
+	{% if No_ORDER %}
+		You have no generated order yet!<br>
+
+	{% else %}
+		
+		Your Order History<br>
+		{% for value in info_dict_class %}<br>
+			Order ID:{{ value.order_ob.oid }}. Order Date:{{ value.order_ob.date }}<br>
+			{% for book in value.book_ob_list %}
+				#{{ book.title}}<br>--By {{ book.authors }}<br>
+			{% endfor %}
+		{% endfor %}<br>
+
+	{% endif %}
+
+	<p>2015 iBook. All rights reserved. Made with love by Cao Jing & Li Nayu</p>
+
+{% endblock %}

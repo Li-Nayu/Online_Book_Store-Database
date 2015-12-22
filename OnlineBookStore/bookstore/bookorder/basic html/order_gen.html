@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Order Info</h2>{% endblock %}
+{% block content %}
+	
+		{% for value in cart_LIST %}
+			<p><a href="/book_page/{{ value.ISBN13.ISBN13 }}">{{ value.ISBN13.title }}</a> for {{  value.copy }} copy/copies</p>
+		{% endfor %}
+		-><a href="/order_page/{{user.username}}">order page</a>
+
+{% endblock %}

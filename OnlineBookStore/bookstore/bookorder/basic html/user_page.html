@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}Bookmarks for {{ user.username }}{% endblock %}
+{% block content %}
+	Ruturn to <a href="/">Main Page</a><br><br>
+
+	********************Personal Info**********************<br>
+	{{ user.username }} and {{ user.email }}  and {{ user.address }}<br>
+
+	You can modify your personal info <a href="/modify_user_info/{{ user.username }}">here!</a>
+
+	
+
+	<br><br>
+	{% if usr_order %}
+		{% for value in usr_order %}
+			<br><br>
+			*********************Order Info*************************<br>
+			{{ value.order_ob.oid  }} -->"Order ID" and  {{ value.order_ob.date }}  --->  "Order Date"<br>
+
+			{% if value.book_ob_list %}
+			*****************Book in Corresponding Order!***********<br>
+				{% for book in value.book_ob_list %}
+					{{ book.title}} and {{ book.ISBN13 }}<br>
+				{% endfor %}
+			{% endif %}
+		{%endfor %}
+		<br><br>
+
+	{% endif %}
+	*****************Feedbacks you have provided!***********<br><br>
+		{% for value in usr_feedback %}
+			{{ value.feedback_ob.ISBN13.ISBN13 }} and {{ value.feedback_ob.text }} and {{ value.feedback_ob.fscore }}<br>
+		{% endfor %}
+
+	*****************Feedbacks you have rated!**************<br><br>
+		{%for value in usr_rate_history%}
+			{{ value.feeedback_ob.ISBN13.ISBN13 }} and {{ value.feeedback_ob.text }} and yout rate to this feedback is {{ value.rate_ob.rscore }}
+			<br><br>
+		{% endfor %}
+{% endblock %}

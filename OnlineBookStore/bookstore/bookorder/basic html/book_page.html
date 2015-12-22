@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Book Page</h2>{% endblock %}
+{% block content %}
+
+	****************************************************************************
+
+	{% for value in book_info %}
+
+		<p><h3>{{ value.title }}</h3>
+		by: {{ value.authors}}<br>
+		ISBN13: {{ value.ISBN13 }}<br>
+		inventory: {{ value.inventory }}</p>
+		<div> <img class="cover" alt="" src={{ value.cover }} data-echo={{ value.cover }} height="200" width="130"></div> 
+        <br>
+
+	{% endfor %}
+
+	{% if user.username %}
+
+		<div>
+			<form action="" method="get">
+				<input  onkeyup="value=value.replace(/[^\d]/g,'')" name="add_to_cart" value="input your copies here">
+				<input type="submit" value="Add to Cart ">
+			</form>
+		</div>
+
+	<br>****************************************************************************<br>
+
+		<div>
+			<br>Share your thoughts with other customers<br>
+			<form action="" method="get">
+				Write a customer review:<br>
+				<input type="text" name="submit_feedback" value="Write your feedback here">
+				<br>
+				Rate of this book:<br>
+				<input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " name="rate_this_book" value="Give a score of 1~10">
+				<br>
+				<input type="submit" value="submit feedback ">
+			</form>
+		</div>
+
+	{% else %}
+
+		<p><a href="/login/">Login</a> to Write your own feedback and buy this book.</p>
+
+	{% endif %}
+
+	<br>****************************************************************************<br>
+
+	Featured Recommendations<br>
+	{% for value in related_book %}
+		<p><a href="/book_page/{{ value.ISBN13 }}">{{ value.title }}</a>by {{ value.authors }}</p>		
+		<div> <img class="cover" alt="" src={{ value.cover }} data-echo={{ value.cover }} height="200" width="130"></div> 
+	{% endfor %}
+
+	<br>****************************************************************************<br>
+	
+	Customer Reviews<br>
+	{% for value in written_feedback %}
+		<p>Score:{{ value.feedback_ob.fscore }}<br>Review:{{ value.feedback_ob.text }}<br>Customer:{{ value.feedback_ob.login_name.login_name }}
+		{% if user.username %}
+			<form action="" method="get"  id="stringform">
+				<input type="radio" value='1' name="rate" /><label>Very Useful</label><br>
+				<input type="radio" value='2' name="rate" /><label>Useful</label><br>
+				<input type="radio" value='3' name="rate" /><label>Useless</label><br>   
+				<input type="hidden" name="fid" value={{ value.feedback_ob.fid }} />
+				<input type="submit" value="Submit">
+			</form>
+		</p>
+		{% endif %}
+	{% endfor %}<br>
+
+    <p>2015 iBook. All rights reserved. Made with love by Cao Jing & Li Nayu</p>
+
+{% endblock %}

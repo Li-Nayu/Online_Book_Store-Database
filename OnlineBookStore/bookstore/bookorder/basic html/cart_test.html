@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Bookmarks</h2>{% endblock %}
+{% block content %}
+<body>
+	{{ Buy_man }}, your book added to the shopping cart successfully<br>
+	<a href="/shop_cart_page/{{user.username}}">Shopping Cart</a>: Confirm your order and pay for the book.
+</body>
+{% endblock %}

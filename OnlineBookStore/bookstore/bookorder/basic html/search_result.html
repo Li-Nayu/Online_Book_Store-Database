@@ -1,0 +1,34 @@
+{ % extends "base.html" %}
+{% block title %} Welcome to Our Online Bookstore {% endblock %}
+{% block head %} Welcome to Our Online Bookstore  {% endblock %}
+{% block content %}
+{%if No_result%}
+	<br><br>
+	No book found by using the search key you provided.
+{% else %}
+	{% if way_1 %}
+		<h3>The result had been sorted year!</h3><br><br>
+		{% for book in search_result %}
+			<p>{{ book.title }} and  {{ book.ISBN13 }} and {{ book.pubDate }}</p><br><br>
+		{% endfor %}
+
+	{% else %}
+		{% if way_2 %}
+			<h3>The result had been sorted by score !</h3><br><br>
+			{% for book_class in search_result %}
+				<p>{{ book_class.book_ob.title }} and  {{ book_class.book_ob.ISBN13 }} andhaha {{ book_class.aver_score }}</p><br><br>
+			{% endfor %}
+		{% else %}
+			{% for book in search_result %}
+				<p>{{ book.title }} and  {{ book.ISBN13 }} </p><br><br>
+			{% endfor %}
+
+		{% endif %}
+
+
+	{% endif %}
+
+{% endif %}
+
+
+{% endblock %}

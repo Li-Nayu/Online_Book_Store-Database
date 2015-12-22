@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Feedback Submit Error</h2>{% endblock %}
+{% block content %}
+	<p>
+		Dear {{ submit_man }}, you have already created your feedback to this book before, so no more feedback is permitted.
+	</p>
+
+{% endblock %}

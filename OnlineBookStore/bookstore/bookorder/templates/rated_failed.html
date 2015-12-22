@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>B&N</title>
+
+    <!-- Bootstrap -->
+    <link href="/site_media/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/site_media/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/site_media/static/css/animate.min.css" rel="stylesheet">
+    <link href="/site_media/static/css/main.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/site_media/static/images/favicon.ico">
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fira+Sans:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+    <div id="wrapper" >
+        <div id="page-content-wrapper" class="st-pusher">
+            <div class="st-pusher-after"></div>
+            <!-- ============================================== HEADER ============================================== -->
+    
+    <header class="header">
+        <nav class="navbar navbar-bookshop navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 hidden-xs hidden-sm">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Online Store</a></li>
+                    <li><a href="/">About Us</a></li>
+                    <li><a href="/">FAQs</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+            <div class="col-md-3 col-xs-10 col-sm-10 navbar-left">
+
+                <p class='text-center'><a href="#"><span class="icon glyphicon glyphicon-earphone"></span> +65-83874676</a></p>
+
+            </div><!-- /.col -->
+
+{% if user.username %}
+
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/order_page/{{user.username}}">My Orders</a></li>
+                    <li class="hidden-xs hidden-sm"> <a href="/shop_cart_page/{{user.username}}">Shopping Cart</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/user/{{user.username}}">My Account</a></li>
+                    <li class="hidden-xs hidden-sm"> <a <a href="/logout">Logout</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% else %}
+            <div class="col-md-4 col-sm-2">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden-xs hidden-sm"><a href="/register/">Register</a></li>
+                    <li class="hidden-xs hidden-sm"><a href="/login/">Login</a></li>
+                </ul><!-- /.nav -->
+            </div><!-- /.col -->
+{% endif %}
+
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+        <div class="main-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 top-search-holder m-t-10">
+                        <!-- ============================================== SEARCH BAR ============================================== -->
+<form class="search-form" role="search" action="" method="get">
+    <div class="form-group">
+        <label class="sr-only" for="page-search">Type your search here</label>
+        <input id="page-search" class="search-input form-control" type="search" placeholder="Search Title/Authors" name = "search_key">
+    </div>
+    <button class="page-search-button">
+        <span class="fa fa-search">
+            <span class="sr-only">Search</span>
+        </span>
+    </button>
+</form>
+<!-- ============================================== SEARCH BAR : END ============================================== -->         </div><!-- /.top-search-holder -->
+
+                    <div class="col-xs-12 col-sm-4 col-md-4 text-center logo-holder">
+                        <!-- ============================================== LOGO ============================================== -->
+<a href="/">
+    <h1 class="logo">B&N</h1>
+    <div class="logo-subtitle">
+        <span>World of books</span>
+    </div><!-- /.logo-subtitle -->
+</a>
+<!-- ============================================== LOGO : END ============================================== -->           </div><!-- /.logo-holder -->
+
+                    <div class="col-xs-12  col-md-2 header-shippment hidden-sm m-t-10">
+                        <!-- ============================================== FREE DELIVERY ============================================== -->
+<div class="media free-delivery hidden-xs ">
+    <span class="media-left"><img src="/site_media/static/images/delivery-icon.png" height="48" width="48" alt=""></span>
+    <div class="media-body">
+        <h5 class="media-heading">Free delivery</h5>
+    </div>
+</div>
+<!-- ============================================== FREE DELIVERY : END ============================================== -->          </div><!-- /.header-shippment -->
+
+                    <div class="col-xs-12 col-sm-4 col-md-2 animate-dropdown1 top-cart-row m-t-10">
+                        <!-- ============================================== SHOPPING CART DROPDOWN ============================================== -->                              
+<ul class="clearfix shopping-cart-block list-unstyled">
+    <li class="dropdown">
+        <a class="">
+            <span class="pull-right cart-right-block">
+                <img src="/site_media/static/images/cart-icon.png" alt="" width="46" height="39" />
+            </span><!-- /.cart-right-block -->
+        </a>
+    </li>
+</ul> <!-- /.list-unstyled --> 
+<!-- ============================================== SHOPPING CART DROPDOWN : END ============================================== -->         </div><!-- /.top-cart-row -->
+                </div><!-- /.row -->
+
+            </div><!-- /.container -->
+
+        </div><!-- /.main-header -->
+
+<!-- ============================================== NAVBAR ============================================== -->
+<div class="header-nav animate-dropdown">
+        <div class="container">         
+            <div class="nav-bg-class">
+                <!-- ============================================================= NAVBAR PRIMARY ============================================================= -->
+<nav class="yamm navbar navbar-primary animate-dropdown" role="navigation">
+    <div class="navbar-header">
+        <button id="btn-navbar-primary-collapse" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div><!-- /.navbar-header -->
+    <div class="collapse navbar-collapse" id="navbar-primary-collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Books</a></li>
+            <li class="dropdown yamm-fw"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Textbooks</a></li>
+            <li><a href="/">Nook Books</a></li>
+            <li class="hidden-sm"><a href="/">Audiobooks</a></li>
+            <li class="hidden-sm hidden-md"><a href="/">Magazines</a></li>
+            <li class="hidden-sm hidden-md"><a href="/">Movies</a></li>
+            <li><a href="/">Music</a></li>
+            <li class="dropdown navbar-right"><a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Pages</a></li>
+        </ul><!-- /.nav -->
+    </div><!-- /.collapse navbar-collapse -->   
+</nav><!-- /.yamm -->
+<!-- ============================================================= NAVBAR PRIMARY : END ============================================================= -->       </div><!-- /.nav-bg-class -->
+        </div><!-- /.container -->
+    
+</div><!-- /.header-nav -->
+<!-- ============================================== NAVBAR : END ============================================== -->
+    </header>
+
+<!-- ============================================== HEADER : END ============================================== -->           
+            <section class="inner-md">
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 center-block">
+				<div class="row info-404">
+					<div class="col-md-6 col-sm-6">
+						<h1 class="title">404</h1>
+					</div>
+					<div class="col-md-6 col-sm-6 right-info inner-top-md">
+						<h2 class="sub-title">error</h2>
+                        <h3>Sorry, You are not allowed to rate your own feedback!</h3>
+						<p><a href="/">&rarr;&nbsp;back to home page</a></p>
+					</div>
+				</div>
+			</div><!-- /.col -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
+</div><!-- /.content -->
+</section>            <!-- ============================================== FOOTER ============================================== -->
+<footer class="footer clearfix">
+    <div class="margin-top-10">
+        <div class="container inner-top-vs">
+            <!-- ============================================== FOOTER-TOP ============================================== -->
+<div class="row">
+    <div class="col-md-3 col-sm-4">
+        <div class="footer-module">
+            <h4 class="footer-module-title">About this site</h4>
+            <div class="footer-module-body m-t-20 clearfix">
+                <p><span class="pull-left"><img src="/site_media/static/images/footer-logo.png" alt="" width="75" height="75"></span>Database project in SUTD,Singapore. Created by Li Nayu and Cao Jing. Thanks for Meihui Zhang's kind guidance.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4">
+        <div class="footer-module">
+            <h4 class="footer-module-title">Categories</h4>
+            <div class="footer-module-body clearfix">
+                <ul class="list-unstyled link-list">
+                    <li><a href="#">Books</a></li>
+                    <li><a href="#">Text books</a></li>
+                    <li><a href="#">Nook books</a></li>
+                    <li><a href="#">Audiobooks</a></li>
+                    <li><a href="#">Magazines</a></li>
+                </ul>
+
+                <ul class="list-unstyled link-list">
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Music</a></li>
+                    <li><a href="#">Games</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 clearfix ">
+        <div class="footer-module">
+            <h4 class="footer-module-title">Information</h4>
+            <div class="footer-module-body clearfix">
+                <ul class="list-unstyled link-list">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Giftcards</a></li>
+                </ul>
+
+                <ul class="list-unstyled link-list">
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Store Locations</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-12">
+        <div class="footer-module">
+            <h4 class="footer-module-title">connect</h4>
+            <div class="footer-module-body clearfix">
+                <ul class="clearfix list-unstyled footer-social-contact">
+                    <li><a href="#" class="fa fa-facebook" title="Facebook"></a></li>
+                    <li><a href="#" class="fa fa-pinterest" title="Pinterest"></a></li>
+                    <li><a href="#" class="fa fa-linkedin" title="Linkedin"></a></li>
+                    <li><a href="#" class="fa fa-twitter" title="Twitter"></a></li>
+                    <li><a href="#" class="fa fa-google-plus" title="Google Plus"></a></li>
+                    <li><a href="#" class="fa fa-rss" title="Rss"></a></li>
+                    <li><a href="#" class="fa fa-instagram" title="Instagram"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================== FOOTER-TOP : END ============================================== -->            <hr>
+            <!-- ============================================== FOOTER-BOTTOM ============================================== -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="pull-left">
+            <ul class="payment-list list-unstyled">
+                <li><a href="#"><img src="/site_media/static/images/payments/1.png" class="img-responsive" height="22" alt=""></a></li>
+
+            </ul>
+        </div>
+        <p class="copyright-footer pull-right">&copy; 2015 B&N. All rights reserved. Made with love by <a href="#">Nayu</a></p>
+    </div>
+</div>
+<!-- ============================================== FOOTER-BOTTOM : END ============================================== -->        </div>
+    </div>
+</footer>
+<!-- ============================================== FOOTER : END ============================================== -->        </div><!-- /.st-pusher -->
+                </div><!-- /#wrapper -->
+
+    <script src="/site_media/static/js/jquery-1.11.2.min.js"></script>
+    <script src="/site_media/static/js/bootstrap.min.js"></script>
+    <script src="/site_media/static/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="/site_media/static/js/owl.carousel.min.js"></script>
+    <script src="/site_media/static/js/perfect-scrollbar.min.js"></script>
+    <script src="/site_media/static/js/jquery-ui.min.js"></script>
+    <script src="/site_media/static/js/jquery.customSelect.min.js"></script>    
+    <script src="/site_media/static/js/jquery.easing-1.3.min.js"></script>
+    <script src="/site_media/static/js/wow.min.js"></script>
+    <script src="/site_media/static/js/echo.min.js"></script>
+    <script src="/site_media/static/js/scripts.js"></script>
+</body>
+</html>
+

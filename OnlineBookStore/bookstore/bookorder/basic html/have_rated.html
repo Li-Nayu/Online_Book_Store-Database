@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Rate Error</h2>{{ user.username }}{% endblock %}
+{% block content %}
+	<p>Sorry, you have rated this feedback before!</p>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Feedback SUbmit Successfully</h2>{% endblock %}
+{% block content %}
+	<p>
+		Dear {{ submit_man }}, your feedback is successfully submitted to the system. Thanks.
+	</p>
+
+{% endblock %}

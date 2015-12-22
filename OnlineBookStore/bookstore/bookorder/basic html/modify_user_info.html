@@ -1,0 +1,38 @@
+
+<body>
+
+	{% if user.username %}
+		
+		<h3>Here is your personal info, you can modify it!</h3><br><br>
+		{{ user.username }} and {{ user.email }}<br>
+
+		{% if modify%}
+			<form action="" method="get"  >
+					<h3>You can modify your personal info below, if some items do not need to be modified, just let it keep empty!</h3>
+					<br>
+					Your New Addr:
+					<input type"text" name="new_addr">
+					<br>
+					Your New Phone Num:
+					<input type"text" onkeyup="value=value.replace(/[^\d]/g,'') " name="new_num">
+					<br> 
+					Your New Credit_Card Num:
+					<input type"text" onkeyup="value=value.replace(/[^\d]/g,'') " name="new_credit">
+					<br> 
+					<input type="hidden" name="fid" value={{ value.feedback_ob.fid }} />
+					<input type="submit" value="Submit">
+				</form>
+
+
+			{% else %}
+
+			<form action="" method="get" >
+				<input type="hidden" name="modify" value={{ user.username }} />
+				<input type="submit" value="Modify MyInfo">
+			</form>
+
+			{% endif %}
+
+	{% endif %}
+
+</body>

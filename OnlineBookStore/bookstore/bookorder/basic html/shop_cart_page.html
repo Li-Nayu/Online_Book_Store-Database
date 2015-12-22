@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block head %}<h2>Shopping Cart<h2>{% endblock %}
+{% block content %}
+	{% if No_order %}
+		No book in your shopping cart yet!<br>
+
+	{%  else %}
+
+		{% for value in cart_LIST %}
+			<p>{{ value.ISBN13.title }}<br>Copy:{{ value.copy }}
+			<div> <img class="cover" alt="" src={{ value.ISBN13.cover }} data-echo={{ value.ISBN13.cover }} height="200" width="130"></div>
+			<form action="" method="get" >
+				<label>Delete</label>
+				<input type="radio" value={{ value.ISBN13.ISBN13 }}  name="trash" />
+				<input type="hidden" value={{ value.copy }} name='copy'>
+				<input type="submit" value="Delete">
+			</form> 
+			</p>
+		{% endfor %}
+
+		Proceed to Checkout<br>	
+		<form action="" method="get" >				
+			<input type="hidden" name="generate_order" value='generate order' />
+			<input type="submit" value="Checkout">
+		</form> 
+		
+		<br><a href="/order_page/{{user.username}}">order page</a>
+
+	{% endif %}
+
+	<p>2015 iBook. All rights reserved. Made with love by Cao Jing & Li Nayu</p>
+
+{% endblock %}

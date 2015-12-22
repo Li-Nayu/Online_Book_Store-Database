@@ -1,0 +1,80 @@
+{ % extends "base.html" %}
+{% block title %} Welcome to Our Online Bookstore {% endblock %}
+{% block head %} Welcome to Our Online Bookstore  {% endblock %}
+{% block content %}
+
+<head>
+
+	<title>
+		search 
+	</title>	
+
+</head>
+<body>
+	<form action="" method="get">
+		<input type"text" name="search_key">
+		<input type="submit" value="Search">
+		year:<input type="radio" value="1" name="sorted_way">
+		score:<input type="radio" value="2" name="sorted_way">
+	</form>
+
+
+</body>
+
+
+
+	{% if user.username %}
+
+		<p>Welcome {{ user.username }}!
+			
+			you can go to the <a href="/shop_cart_page/{{user.username}}">Shopping Cart!</a>
+			<br>
+			Here you can <a href="/logout/">logout</a> also. </p>
+			<br>
+			Here you can go to your own page. <a href="/user/{{user.username}}">MYPAGE</a>
+			<br>
+			You can view <a href="/order_page/{{user.username}}">your generated orders</a> too.
+			<br>
+				*****************************华丽丽的分割线***********************<br>	
+					 HOT BOOKS! 下面这些就是假装的书籍信息<br>
+						(you can jump to the single book page by clicking the book title)<br>
+				{% for value in fixed_key %}
+					 {{ value.ISBN13 }} and {{ value.inventory }} and <a href="/book_page/{{value.ISBN13}}">{{ value.title }}</a><br>
+		   
+					<!--  当点击主页中的链接的时候，先是启动了相应的函数，然后函数把所需变量传给ｈｔｍｌ,也就是说，我可以在生成主页书籍信息的时候，给这些信息附上对应链接，就像ｕｓｅｒ链接一样，然后跳转到＜单个书籍页＞
+				-->
+				{% endfor %}
+				*****************************华丽丽的分割线***********************<br>
+				Recommanded Books!推荐书籍信息<br><br>
+				{% for value in recommand_book %}
+					{{ value.ISBN.title }} and {{ value.ISBN.authors }} and {{ value.NUM }}<br>
+ 				{% endfor %}
+
+
+		{% else %}
+				Welcome anonymous user!<br>
+				Here you need to <a href="/login/">login</a><br>
+				Do not have one account yet?<br>
+					Please <a href="/register/">register</a> first!<br>
+
+				*****************************华丽丽的分割线***********************<br>	
+				HOT BOOKS! 下面这些就是假装的书籍信息<br>
+				(you can jump to the single book page by clicking the book title)<br>
+				{% for value in fixed_key %}
+					 {{ value.ISBN13 }} and {{ value.inventory }} and <a href="/book_page/{{value.ISBN13}}">{{ value.title }}</a><br>
+		   
+					<!--  当点击主页中的链接的时候，先是启动了相应的函数，然后函数把所需变量传给ｈｔｍｌ,也就是说，我可以在生成主页书籍信息的时候，给这些信息附上对应链接，就像ｕｓｅｒ链接一样，然后跳转到＜单个书籍页＞
+				-->
+				{% endfor %}
+				*****************************华丽丽的分割线***********************<br>
+				Recommanded Books!推荐书籍信息<br><br>
+				{% for value in recommand_book %}
+					{{ value.ISBN.title }} and {{ value.ISBN.authors }} and {{ value.NUM }}<br>
+ 				{% endfor %}
+
+	{% endif %}
+	
+	
+
+
+{% endblock %}
