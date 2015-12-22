@@ -10,8 +10,8 @@ Thanks to Prof Meihui Zhang's kind guidance.
 * Developing server is running at `localhost:8000/`
 
 #Running Instruction
-* ```$cd Sutd/Database/OnlineBookStore```
-  ```$source env/bin/activate```
-  ```$cd bookstore```
-  ```$python manage.py runserver```
+* ```$cd Sutd/Database/OnlineBookStore```<br>
+  ```$source env/bin/activate```<br>
+  ```$cd bookstore```<br>
+  ```$python manage.py runserver```<br>
 * Open the firefox browser, input `localhost:8000/`
