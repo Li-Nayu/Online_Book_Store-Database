@@ -15,3 +15,6 @@ Thanks to Prof Meihui Zhang's kind guidance.
   ```$cd bookstore```<br>
   ```$python manage.py runserver```<br>
 * Open the Firefox browser, input `localhost:8000/`
+
+----------------------------
+<h4>I'm thinking about Jingjing.</h4>
